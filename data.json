@@ -1,0 +1,28 @@
+{
+    "recipes": [
+        {
+            "name": "hot dogs",
+            "link": "www.google.com",
+            "ingred 1": "water",
+            "ingred 2": "meat",
+            "complex": "low",
+            "fancy": "low"
+        },
+        {
+            "name": "chicken pot pie",
+            "link": "zelda",
+            "ingred 1": "chicken",
+            "ingred 2": "pie",
+            "complex": "medium",
+            "fancy": "medium"
+        },
+        {
+            "name": "roast duck",
+            "link": "www.duck.com",
+            "ingred 1": "duck",
+            "ingred 2": "meat",
+            "complex": "low",
+            "fancy": "high"
+        }
+    ]
+}
