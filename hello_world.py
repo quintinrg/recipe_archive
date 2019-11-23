@@ -31,6 +31,9 @@ app = Flask(__name__)
 #     final_answer = guess
 #     final_tries = tries
 
+# get/post data from object in data.json...
+# need to make it dynamic, so that can search from frontend
+
 
 @app.route("/")
 def index():
