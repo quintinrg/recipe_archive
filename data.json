@@ -26,3 +26,7 @@
         }
     ]
 }
+// When adding data, it appends a whole new 
+// "recipe" category, and then correctly appends the  data
+// Need to read file, parse, stringify, and then overwrite the file:
+// https://stackoverflow.com/questions/47427905/how-to-append-json-object-into-existing-json-file-in-android
