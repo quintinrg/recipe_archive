@@ -1,32 +1,40 @@
-{
-    "recipes": [
-        {
-            "name": "hot dogs",
-            "link": "www.google.com",
-            "ingred 1": "water",
-            "ingred 2": "meat",
-            "complex": "low",
-            "fancy": "low"
-        },
-        {
-            "name": "chicken pot pie",
-            "link": "zelda",
-            "ingred 1": "chicken",
-            "ingred 2": "pie",
-            "complex": "medium",
-            "fancy": "medium"
-        },
-        {
-            "name": "roast duck",
-            "link": "www.duck.com",
-            "ingred 1": "duck",
-            "ingred 2": "meat",
-            "complex": "low",
-            "fancy": "high"
-        }
-    ]
-}
-// When adding data, it appends a whole new 
-// "recipe" category, and then correctly appends the  data
-// Need to read file, parse, stringify, and then overwrite the file:
-// https://stackoverflow.com/questions/47427905/how-to-append-json-object-into-existing-json-file-in-android
+[
+    {
+        "id": "b7f20ff1-2777-402a-9201-d2aad0d6a7a1",
+        "name": "hot dogs",
+        "link": "www.google.com",
+        "ingredients": [
+            "meat",
+            "moremeat"
+        ],
+        "complex": "low",
+        "fancy": "low"
+    },
+    {
+        "id": "20b5a7b5-c52d-4e19-b5f9-9b0cb9436af9",
+        "name": "chicken pot pie",
+        "link": "zelda",
+        "ingred 1": "chicken",
+        "ingred 2": "pie",
+        "complex": "medium",
+        "fancy": "medium"
+    },
+    {
+        "id": "d1d3269a-4f87-4dfd-839b-3e373fc817f2",
+        "name": "roast duck",
+        "link": "www.duck.com",
+        "ingred 1": "duck",
+        "ingred 2": "meat",
+        "complex": "low",
+        "fancy": "high"
+    },
+    {
+        "name": "hot dogs",
+        "link": "www.google.com",
+        "ingred 1": "water",
+        "ingred 2": "meat",
+        "complex": "low",
+        "fancy": "low",
+        "id": "fb72e6f9-f44e-43ea-a232-aedb881fad91"
+    }
+]

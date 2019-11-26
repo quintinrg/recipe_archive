@@ -1,51 +1,43 @@
-from flask import render_template
-from flask import Flask
+from flask import Flask, jsonify, request
+import json
+import uuid
 app = Flask(__name__)
 
-# from random import randint
-
-# my_rand = randint(0, 99)
-# print(f'random: {my_rand}')
-# top_limit = 100
-# bottom_limit = 0
-# guess = " "
-# tries = 0
-
-# while my_rand != guess:
-#   tries = tries + 1
-
-#   guess = int((top_limit + bottom_limit) / 2)
-
-#   print(f'Guess: {guess}, Toplimit: {top_limit}, Bottom limit: {bottom_limit}')
-
-#   if guess > my_rand:
-#     print("Guess was too high")
-#     top_limit = guess
-
-#   elif guess < my_rand:
-#     print("Guess was too low")
-#     bottom_limit = guess
-
-#   elif guess == my_rand:
-#     print(f"Correct, the number was {my_rand}!")
-#     final_answer = guess
-#     final_tries = tries
-
-# get/post data from object in data.json...
-# need to make it dynamic, so that can search from frontend
+with open("data.json", 'r') as data_file:
+  data = json.load(data_file)
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def index():
-  name = 'Quintin'
-  return render_template(
-      'index.html',
-      title='Welcome',
-      username=name,
-      final=final_answer,
-      tries=final_tries
-  )
+  if request.method == "GET":
+    return jsonify(data)
+  elif request.method == "POST":
+    body = request.get_json()
 
+    body["id"] = str(uuid.uuid4())
+    data.append(body)
+    with open('data.json', 'w') as data_file:
+      json.dump(data, data_file, indent=2)
+    return next(recipe for recipe in data if recipe["id"] == body["id"])
+
+    #Delete Route
+    # Update Route
+
+
+#gets single recipe
+@app.route("/<id>")
+def single_recipe(id):
+  #add if else for PUT(update) and DELETE and GET(single)
+  return next(recipe for recipe in data if recipe["id"] == id)
+
+
+#1 use actual database - later
+
+#2 build frontend
+
+# docker deployed to digitalocean
+
+#rethink db (noSQL)
 
 if __name__ == "__main__":
   app.run()
