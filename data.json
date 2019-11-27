@@ -14,8 +14,10 @@
         "id": "20b5a7b5-c52d-4e19-b5f9-9b0cb9436af9",
         "name": "chicken pot pie",
         "link": "zelda",
-        "ingred 1": "chicken",
-        "ingred 2": "pie",
+        "ingredients": [
+            "chicken",
+            "pie"
+        ],
         "complex": "medium",
         "fancy": "medium"
     },
@@ -23,16 +25,20 @@
         "id": "d1d3269a-4f87-4dfd-839b-3e373fc817f2",
         "name": "roast duck",
         "link": "www.duck.com",
-        "ingred 1": "duck",
-        "ingred 2": "meat",
+        "ingredients": [
+            "duck",
+            "meat"
+        ],
         "complex": "low",
         "fancy": "high"
     },
     {
         "name": "hot dogs",
         "link": "www.google.com",
-        "ingred 1": "water",
-        "ingred 2": "meat",
+        "ingredients": [
+            "water",
+            "meat"
+        ],
         "complex": "low",
         "fancy": "low",
         "id": "fb72e6f9-f44e-43ea-a232-aedb881fad91"
