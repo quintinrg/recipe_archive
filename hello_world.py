@@ -21,11 +21,13 @@ def index():
       json.dump(data, data_file, indent=2)
     return next(recipe for recipe in data if recipe['id'] == body['id'])
 
-    #Delete Route
-    # Update Route
+
+#Delete Route
+#Update Route
 
 
-#gets single recipe
+#GETs single recipe, PUTs new name in recipe (edits name), DELETEs recipe
+#
 @app.route('/<id>', methods=['GET', 'DELETE', 'PUT'])
 def single_recipe(id):
   if request.method == 'GET':
@@ -35,9 +37,8 @@ def single_recipe(id):
     return "Deleted"
 
   elif request.method == 'PUT':
-    return "Updated"
-
-  #add if else for PUT(update) and DELETE and GET(single)
+    body = request.get_json()
+    next(recipe for recipe in data if recipe['id'] == id)
 
 
 #1 build frontend - React/TS
