@@ -30,15 +30,21 @@ def index():
 #
 @app.route('/<id>', methods=['GET', 'DELETE', 'PUT'])
 def single_recipe(id):
-  if request.method == 'GET':
+  if request.method == 'GET':  #displays single recipe - first one that matches 'id'
     return next(recipe for recipe in data if recipe['id'] == id)
 
   elif request.method == 'DELETE':
-    return "Deleted"
+    # return "Deleted"
+    for recipe in data:
+      if id in recipe:
+        del element['id']
+    with open('data.json', 'w') as data_file:
+      newdata = json.dump(data, data_file, indent=2)
+      return jsonify(newdata)  #returns null
 
   elif request.method == 'PUT':
     body = request.get_json()
-    next(recipe for recipe in data if recipe['id'] == id)
+    return next(recipe for recipe in data if recipe['id'] == id)
 
 
 #1 build frontend - React/TS
