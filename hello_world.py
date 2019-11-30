@@ -35,6 +35,7 @@ def single_recipe(id):
 
   elif request.method == 'DELETE':
     # return "Deleted"
+    body = request.get_json()
     for recipe in data:
       if id in recipe:
         del element['id']
