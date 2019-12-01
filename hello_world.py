@@ -1,8 +1,11 @@
 from flask import Flask, jsonify, request
 import json
 import uuid
-app = Flask(__name__)
+from flask_cors import CORS
+from deepmerge import always_merger
 
+app = Flask(__name__)
+CORS(app)
 with open('data.json', 'r') as data_file:
   data = json.load(data_file)
 
@@ -22,10 +25,6 @@ def index():
     return next(recipe for recipe in data if recipe['id'] == body['id'])
 
 
-#Delete Route
-#Update Route
-
-
 #GETs single recipe, PUTs new name in recipe (edits name), DELETEs recipe
 #
 @app.route('/<id>', methods=['GET', 'DELETE', 'PUT'])
@@ -34,18 +33,28 @@ def single_recipe(id):
     return next(recipe for recipe in data if recipe['id'] == id)
 
   elif request.method == 'DELETE':
-    # return "Deleted"
-    body = request.get_json()
-    for recipe in data:
-      if id in recipe:
-        del element['id']
+    #return "Deleted"
+
+    for ix, recipe in enumerate(data):
+      if recipe['id'] == id:
+        del data[ix]
+
     with open('data.json', 'w') as data_file:
-      newdata = json.dump(data, data_file, indent=2)
-      return jsonify(newdata)  #returns null
+      json.dump(data, data_file, indent=2)
+    with open('data.json', 'r') as data_file:
+      output = json.load(data_file)
+
+    return jsonify(output)
 
   elif request.method == 'PUT':
     body = request.get_json()
-    return next(recipe for recipe in data if recipe['id'] == id)
+    for ix, recipe in enumerate(data):
+      if recipe['id'] == id:
+        data[ix] = always_merger.merge(recipe, body)
+    with open('data.json', 'w') as data_file:
+
+      json.dump(data, data_file, indent=2)
+    return jsonify(next(recipe for recipe in data if recipe['id'] == id))
 
 
 #1 build frontend - React/TS
